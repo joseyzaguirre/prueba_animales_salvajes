@@ -21,7 +21,26 @@ $("#btnRegistrar").on('click', function(){
 
     const animal = $("#animal").val()
     const edad = $("#edad").val()
-    const comentarios = $("#comentarios").val()
+    const comentarios = $("#comentarios").val().trim()
+
+    const errores = [];
+
+    if (animal == '') {
+        errores.push('debes seleccionar un animal')
+    }
+
+    if (edad == '') {
+        errores.push('debes seleccionar un rango de edad')
+    }
+
+    if (comentarios == '') {
+        errores.push('debes escribir un comentario')
+    }
+
+    if (errores.length > 0) {
+        alert(errores)
+        return
+    }
 
     let nuevoanimal;
 
@@ -47,13 +66,16 @@ function dibujarAnimales() {
     for (animal of animales) {
         
         $("#Animales").append(`
-        <div class="card col-3" style="width: 18rem;">
+        <div class="card col-3 p-1" style="width: 18rem;">
             <img src="${animal.img}" class="card-img-top" alt="...">
             <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <audio controls>
+                <source src="${animal.sonido}" type="audio/mpeg">
+            </audio> 
             </div>
         </div>        
         
         `)
     }
 }
+

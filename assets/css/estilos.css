@@ -48,3 +48,12 @@ body {
     max-width: 85% !important;
 }
 
+audio {
+  width: 150px;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 15vw;
+  object-fit: cover;
+}
